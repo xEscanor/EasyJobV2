@@ -1,0 +1,76 @@
+﻿@model EasyJob.Models.User
+@{
+    Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>Login</title>
+    <style>        #login-div {
+        position:absolute;
+        left:40%;
+        top: 40%;
+        border: 1px solid #ccc;
+        padding: 10px 10px;
+        }
+    </style>
+
+</head>
+<body>
+    <div id="login-div">
+        @using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
+        {
+            <table>
+                <tr>
+                    <td></td>
+                    <td style="text-decoration:underline">Login to EasyJob </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Email)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Email)
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.Email)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Password)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Password)
+                    </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        @Html.ValidationMessageFor(model => model.Password)
+                    </td>
+                </tr>
+                <tr>
+                    <td colspan="2"> <label classe="field-validation-error"> @Html.DisplayFor(model => model.LoginErrorMessage) </label> </td>
+                </tr>
+                <tr>
+                    <td></td>
+                    <td>
+                        <input type="submit" name="name" value="Login" />
+                        <input type="reset" name="name" value="Clear" />
+                    </td>
+                </tr>
+            </table>
+        }
+    </div>
+    <script src="~/Scripts/jquery-3.3.1.js"></script>
+    <script src="~/Scripts/jquery.validate.js"></script>
+    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+</body>
+</html>

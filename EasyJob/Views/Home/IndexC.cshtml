@@ -1,0 +1,22 @@
+﻿
+@{
+    Layout = null;
+       if (Session["userID"]==null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+    <meta name="viewport" content="width=device-width" />
+    <title>IndexC</title>
+</head>
+<body>
+    <div>
+       @Session["userID"].ToString()
+    </div>
+</body>
+</html>
