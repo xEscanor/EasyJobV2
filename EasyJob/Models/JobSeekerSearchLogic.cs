@@ -21,7 +21,7 @@ namespace EasyJob.Models
                     result=result.Where(x => x.Ville.Nom.Equals(searchModel.Ville.Nom));
 
          
-              Ceci est un test
+             
 
 
            }
