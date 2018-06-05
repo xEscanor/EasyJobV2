@@ -8,6 +8,8 @@ namespace EasyJob.Models
 {
     public class JobOffer
     {
+        public Company Company { get; set; }
+
         public int Id { get; set; }
         [Required]
         public string Title { get; set; }
@@ -16,21 +18,27 @@ namespace EasyJob.Models
         public string Description { get; set; }
 
         [Required]
+        public string Diploma { get; set; }
+
+        [Required]
+        public int Experience { get; set; }
+
+        [Required]
         public int Salary { get; set; }
 
         [Required]
-        public Profil ProfilID { get; set; }
+        public Profil Profil { get; set; }
 
         //foreign key
         [Required]
-        public FieldOfActivity FieldOfActivityId { get; set; }
+        public FieldOfActivity FieldOfActivity { get; set; }
 
         //foreign key
         [Required]
-        public Ville VilleId { get; set; }
+        public Ville Ville { get; set; }
 
         [Required]
-        public Typee TypeId { get; set; }
+        public Typee Type { get; set; }
 
        
     }
@@ -39,5 +47,14 @@ namespace EasyJob.Models
         CDI = 1,
         CDD = 2,
         Stage = 3
+    }
+    public enum Profil
+    {
+        Cadre,
+        Stagiaire,
+        Apprenti,
+        Technicien,
+        Directeur,
+        Chercheur
     }
 }

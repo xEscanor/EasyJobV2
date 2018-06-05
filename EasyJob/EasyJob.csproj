@@ -207,6 +207,7 @@
     <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
+    <Compile Include="Controllers\JobOfferController.cs" />
     <Compile Include="Controllers\JobSeekerController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -220,11 +221,12 @@
     <Compile Include="Models\EasyJobContext.cs" />
     <Compile Include="Models\FieldOfActivity.cs" />
     <Compile Include="Models\JobOffer.cs" />
+    <Compile Include="Models\JobOfferSearchLogic.cs" />
+    <Compile Include="Models\JobOfferSearchModel.cs" />
     <Compile Include="Models\JobSeeker.cs" />
     <Compile Include="Models\JobSeekerSearchLogic.cs" />
     <Compile Include="Models\JobSeekerSearchModel.cs" />
     <Compile Include="Models\Photo.cs" />
-    <Compile Include="Models\Profil.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Ville.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
@@ -293,6 +295,8 @@
     <Content Include="Views\User\AddOrEditJS.cshtml" />
     <Content Include="Views\JobSeeker\Index.cshtml" />
     <Content Include="Views\JobSeeker\Recherche.cshtml" />
+    <Content Include="Views\JobOffer\Index.cshtml" />
+    <Content Include="Views\JobOffer\Recherche.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
