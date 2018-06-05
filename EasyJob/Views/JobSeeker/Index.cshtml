@@ -1,6 +1,6 @@
 ﻿
 @using EasyJob.Models
-@model JobSeeker
+@model JobSeekerSearchModel
 @{
     Layout = null;
 }
@@ -26,25 +26,37 @@
     <div id="login-div">
         @using (Html.BeginForm("Recherche", "JobSeeker", FormMethod.Post))
         {
-            <div>
-                @Html.DropDownListFor(m => m.Gender,
-                             new SelectList(Enum.GetValues(typeof(Gender))),
-                             "Select Gender")
-            </div>
+         
             <table>
                 <tr>
                     <td>
-                        @Html.LabelFor(model => model.Id)
+                        @Html.LabelFor(model => model.Experience)
                     </td>
                     <td>
-                        @Html.EditorFor(model => model.Id)
+                        @Html.EditorFor(model => model.Experience)
                     </td>
                 <tr>
                     <td>
                         @Html.LabelFor(model => model.Ville)
                     </td>
                     <td>
-                        @Html.EditorFor(model => model.Ville)
+                        @Html.EditorFor(model => model.Ville.Nom)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model => model.Diploma)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Diploma)
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        @Html.LabelFor(model=>model.Age)
+                    </td>
+                    <td>
+                        @Html.EditorFor(model => model.Age)
                     </td>
                 </tr>
             </table>

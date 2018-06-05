@@ -30,6 +30,7 @@ namespace EasyJob.Models
         [Required]
         public DateTime BirthDay { get; set; }
 
+        public int Age { get; set; }
         [Required]
         public string Diploma { get; set; }
 
@@ -40,8 +41,8 @@ namespace EasyJob.Models
 
         [Required]
         public IEnumerable<Photo> Photos { get; set; }
-
-
+        
+       
     }
     public enum Gender
     {

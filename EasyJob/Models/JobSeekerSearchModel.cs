@@ -7,8 +7,11 @@ namespace EasyJob.Models
 {
     public class JobSeekerSearchModel
     {
-        public int? Id { get; set; }
+        public int? Experience { get; set; }
+        public String Diploma { get; set; }
         public Ville Ville { get; set; }
-      
+        public int? Age { get; set; }
+       
     }
+
 }
