@@ -204,6 +204,7 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AddCompanyController.cs" />
     <Compile Include="Controllers\AddJobOfferController.cs" />
     <Compile Include="Controllers\AddJobSeekersController.cs" />
     <Compile Include="Controllers\AuthorsController.cs" />
@@ -302,14 +303,16 @@
     <Content Include="Views\JobOffer\Recherche.cshtml" />
     <Content Include="Views\AddJobOffer\Create.cshtml" />
     <Content Include="Views\AddJobOffer\Delete.cshtml" />
-    <Content Include="Views\AddJobOffer\Details.cshtml" />
     <Content Include="Views\AddJobOffer\Edit.cshtml" />
     <Content Include="Views\AddJobOffer\Index.cshtml" />
     <Content Include="Views\AddJobSeekers\Create.cshtml" />
     <Content Include="Views\AddJobSeekers\Delete.cshtml" />
-    <Content Include="Views\AddJobSeekers\Details.cshtml" />
     <Content Include="Views\AddJobSeekers\Edit.cshtml" />
     <Content Include="Views\AddJobSeekers\Index.cshtml" />
+    <Content Include="Views\AddCompany\Create.cshtml" />
+    <Content Include="Views\AddCompany\Delete.cshtml" />
+    <Content Include="Views\AddCompany\Edit.cshtml" />
+    <Content Include="Views\AddCompany\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
