@@ -35,12 +35,12 @@ namespace EasyJob.Controllers
         [HttpPost]
         public ActionResult AddOrEditC(User userModel)
         {
-           var BDD = db.Set<User>();
-         
-            if ( BDD.Any(x => x.Email == userModel.Email))
+            var BDD = db.Set<User>();
+
+            if (BDD.Any(x => x.Email == userModel.Email))
             {
                 ViewBag.DuplicateMessage = "Username already exist.";
-                    return View("AddOrEdit", userModel);
+                return View("AddOrEdit", userModel);
             }
 
             BDD.Add(userModel);
@@ -49,6 +49,7 @@ namespace EasyJob.Controllers
             ViewBag.SuccesMessage = "Registration successful";
             return View(viewName: "AddOrEditC", model: new User());
         }
+
         public ActionResult AddOrEditJS(User userModel)
         {
             var BDD = db.Set<User>();

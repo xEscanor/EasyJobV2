@@ -204,10 +204,13 @@
     <Compile Include="Areas\HelpPage\SampleGeneration\SampleDirection.cs" />
     <Compile Include="Areas\HelpPage\SampleGeneration\TextSample.cs" />
     <Compile Include="Areas\HelpPage\XmlDocumentationProvider.cs" />
+    <Compile Include="Controllers\AddJobOfferController.cs" />
+    <Compile Include="Controllers\AddJobSeekersController.cs" />
     <Compile Include="Controllers\AuthorsController.cs" />
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobOfferController.cs" />
+    <Compile Include="Controllers\JobOffersController.cs" />
     <Compile Include="Controllers\JobSeekerController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -297,6 +300,16 @@
     <Content Include="Views\JobSeeker\Recherche.cshtml" />
     <Content Include="Views\JobOffer\Index.cshtml" />
     <Content Include="Views\JobOffer\Recherche.cshtml" />
+    <Content Include="Views\AddJobOffer\Create.cshtml" />
+    <Content Include="Views\AddJobOffer\Delete.cshtml" />
+    <Content Include="Views\AddJobOffer\Details.cshtml" />
+    <Content Include="Views\AddJobOffer\Edit.cshtml" />
+    <Content Include="Views\AddJobOffer\Index.cshtml" />
+    <Content Include="Views\AddJobSeekers\Create.cshtml" />
+    <Content Include="Views\AddJobSeekers\Delete.cshtml" />
+    <Content Include="Views\AddJobSeekers\Details.cshtml" />
+    <Content Include="Views\AddJobSeekers\Edit.cshtml" />
+    <Content Include="Views\AddJobSeekers\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
