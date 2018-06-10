@@ -14,13 +14,12 @@ namespace EasyJob.Controllers
     {
         private EasyJobContext db = new EasyJobContext();
 
-        // GET: AddJobOffer
+       
         public ActionResult Index()
         {
             return View(db.JobOffers.ToList());
         }
-
-        // GET: AddJobOffer/Details/5
+        
         public ActionResult Details(int? id)
         {
             if (id == null)
