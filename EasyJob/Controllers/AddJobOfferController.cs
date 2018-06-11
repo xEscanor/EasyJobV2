@@ -17,7 +17,14 @@ namespace EasyJob.Controllers
        
         public ActionResult Index()
         {
-            return View(db.JobOffers.ToList());
+            var session = Convert.ToInt32(Session["userID"]);
+            return View(db.JobOffers.Where(x => x.Company.UserId.UserId == session).ToList());
+
+            //var result = db.JobOffers.Where(x => x.Company.UserId == Session["userID"]).ToList();
+          //  if (result == null)
+            //    return View();
+            //else
+             //   return View(result);
         }
         
         public ActionResult Details(int? id)
