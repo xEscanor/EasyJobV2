@@ -3,74 +3,38 @@
     Layout = null;
 }
 
-<!DOCTYPE html>
 
-<html>
+
+<!doctype html>
+<html lang="en">
 <head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-    <style>        #login-div {
-        position:absolute;
-        left:40%;
-        top: 40%;
-        border: 1px solid #ccc;
-        padding: 10px 10px;
-        }
-    </style>
-
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <meta name="description" content="">
+    <meta name="author" content="">
+    <title>EasyJob</title>
 </head>
-<body>
-    <div id="login-div">
-        @using (Html.BeginForm("Authorize", "Login", FormMethod.Post))
-        {
-            <table>
-                <tr>
-                    <td></td>
-                    <td style="text-decoration:underline">Login to EasyJob </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(model => model.Email)
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.Email)
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        @Html.ValidationMessageFor(model => model.Email)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(model => model.Password)
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.Password)
-                    </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        @Html.ValidationMessageFor(model => model.Password)
-                    </td>
-                </tr>
-                <tr>
-                    <td colspan="2"> <label classe="field-validation-error"> @Html.DisplayFor(model => model.LoginErrorMessage) </label> </td>
-                </tr>
-                <tr>
-                    <td></td>
-                    <td>
-                        <input type="submit" name="name" value="Login" />
-                        <input type="reset" name="name" value="Clear" />
-                    </td>
-                </tr>
-            </table>
-        }
-    </div>
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
+<body class="text-center">
+    @using (Html.BeginForm("Authorize", "Login", FormMethod.Post, htmlAttributes: new { @class = "form-signin" }))
+    {
+        <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
+        <h1 class="h3 mb-3 font-weight-normal">Login to EasyJob</h1>
+        <label for="inputEmail" class="sr-only">Email</label>
+        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email", @id = "inputEmail", @placeholder = "Email address" } })
+        @Html.ValidationMessageFor(model => model.Email)
+        <label for="inputPassword" class="sr-only">Password</label>
+        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @type = "password", @id = "inputPassword", @class = "form-control", @placeholder = "Password" } })
+        @Html.ValidationMessageFor(model => model.Password)
+        <label classe="field-validation-error"> @Html.DisplayFor(model => model.LoginErrorMessage) </label>
+        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Login" name="name">Login</button>
+        <button class="btn btn-lg btn-secondary btn-block" type="Clear" value="Login" name="name">Clear</button>
+
+    }
 </body>
 </html>
+
+@Styles.Render("~/Content/bootstrap.min.css")
+@Styles.Render("~/Content/signin.css")
+@Scripts.Render("~/Scripts/jquery-3.3.1.js")
+@Scripts.Render("~/Scripts/jquery.validate.js")
+@Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")

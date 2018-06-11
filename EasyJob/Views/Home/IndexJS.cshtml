@@ -1,29 +1,22 @@
 ﻿
 @{
-    Layout = null;
-    if (Session["userID"]==null || (bool)Session["company"]== true)
+    ViewBag.Title = "Home";
+    if (Session["userID"] == null || (bool)Session["company"] == true)
     {
         Response.Redirect("~/Login/Index");
     }
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Index</title>
-</head>
-<body>
-    <div>
-        <h1>JobSeeker</h1>
-        <h3>
-            @if ((bool)Session["userFC"])
-            {
-
-            }
-            @Session["company"]
-        </h3><a href="@Url.Action("LogOut","Login")">LogOut</a>
+<div class="row">
+    <h1>Job Offers</h1>
+</div>
+<div class="row">
+    <div class="col">
+        <evil-tinder></evil-tinder>
     </div>
-</body>
-</html>
+    
+</div>
+@Styles.Render("~/Content/likeordislike.css")
+@Scripts.Render("https://code.jquery.com/pep/0.4.1/pep.js")
+@Scripts.Render("https://unpkg.com/can@4/dist/global/can.js")
+@Scripts.Render("~/Scripts/likeordislike.js")
