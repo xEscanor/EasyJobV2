@@ -1,7 +1,7 @@
 ﻿
 @{
     Layout = null;
-    if (Session["userID"]==null)
+    if (Session["userID"]==null || (bool)Session["company"]== true)
     {
         Response.Redirect("~/Login/Index");
     }
@@ -18,11 +18,12 @@
     <div>
         <h1>JobSeeker</h1>
         <h3>
-        @if ((bool)Session["userFC"])
-        {
-            
-        }
-            </h3><a href="@Url.Action("LogOut","Login")">LogOut</a>
+            @if ((bool)Session["userFC"])
+            {
+
+            }
+            @Session["company"]
+        </h3><a href="@Url.Action("LogOut","Login")">LogOut</a>
     </div>
 </body>
 </html>

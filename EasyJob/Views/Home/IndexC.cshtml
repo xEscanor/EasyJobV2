@@ -1,7 +1,7 @@
 ﻿
 @{
     Layout = null;
-       if (Session["userID"]==null)
+       if (Session["userID"]==null || (bool)Session["company"] == false)
     {
         Response.Redirect("~/Login/Index");
     }
@@ -16,7 +16,8 @@
 </head>
 <body>
     <div>
-       @Session["userID"].ToString()
+        @Session["userID"].ToString()
+        @Session["company"]
     </div>
 </body>
 </html>

@@ -42,9 +42,9 @@ namespace EasyJob.Controllers
 
                 Session["userId"] = userDetails.UserId;
                 this.Session["userFC"] = userDetails.FirstConnexion;
+                Session["company"] = userDetails.IsCompany;
 
-
-               if (userModel.IsCompany == true)
+               if (BDD.Where(x => x.Email == userModel.Email && x.Password == userModel.Password).FirstOrDefault().IsCompany)
                     return RedirectToAction("IndexC", "Home");
                 else
                 {
