@@ -11,6 +11,8 @@ namespace EasyJob.Models
     {
         public int Id { get; set; }
 
+        public User UserId { get; set; }
+
         [Required]
         public string Email { get; set; }
 
