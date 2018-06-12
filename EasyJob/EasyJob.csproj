@@ -221,7 +221,6 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Author.cs" />
-    <Compile Include="Models\ClikeJS.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\EasyJobContext.cs" />
     <Compile Include="Models\FieldOfActivity.cs" />
@@ -231,8 +230,6 @@
     <Compile Include="Models\JobSeeker.cs" />
     <Compile Include="Models\JobSeekerSearchLogic.cs" />
     <Compile Include="Models\JobSeekerSearchModel.cs" />
-    <Compile Include="Models\JSlikeC.cs" />
-    <Compile Include="Models\Match.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Ville.cs" />

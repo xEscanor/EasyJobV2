@@ -28,7 +28,5 @@ namespace EasyJob.Controllers
                     select v).ToList();
 
         }
-
-        
     }
 }

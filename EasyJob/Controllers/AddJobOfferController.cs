@@ -112,12 +112,6 @@ namespace EasyJob.Controllers
             return RedirectToAction("Index");
         }
 
-        public ActionResult Selectionner (int id)
-        {
-            Session["offreId"] = id;
-            return RedirectToAction("Index", "JobSeeker");
-        }
-
         protected override void Dispose(bool disposing)
         {
             if (disposing)

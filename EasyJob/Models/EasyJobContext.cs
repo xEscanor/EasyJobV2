@@ -29,10 +29,5 @@ namespace EasyJob.Models
         public System.Data.Entity.DbSet<EasyJob.Models.Author> Authors { get; set; }
 
         public System.Data.Entity.DbSet<EasyJob.Models.User> Users { get; set; }
-        public System.Data.Entity.DbSet<EasyJob.Models.JSlikeC> JSlikeCs { get; set; }
-
-        public System.Data.Entity.DbSet<EasyJob.Models.ClikeJS> ClikeJSs { get; set; }
-
-        public System.Data.Entity.DbSet<EasyJob.Models.Match> Matches { get; set; }
     }
 }
