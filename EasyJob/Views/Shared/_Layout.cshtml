@@ -10,6 +10,29 @@
 </head>
 <meta http-equiv="Content-Type" content="text/html; charset=utf-8"/>
 <body>
+    @{
+        if (Session["userID"] == null)
+        {
+    <div class="navbar navbar-inverse navbar-fixed-top">
+        <div class="container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle" data-toggle="collapse" data-target=".navbar-collapse">
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                @Html.ActionLink("EasyJob", "Index", "Login", new { area = "" }, new { @class = "navbar-brand" })
+            </div>
+            <div class="navbar-collapse collapse">
+                <ul class="nav navbar-nav">
+                    <li>@Html.ActionLink("Retour", "Index", "Login", new { area = "" }, null)</li>
+                </ul>
+            </div>
+        </div>
+    </div>
+        }
+        else
+        {
     <div class="navbar navbar-inverse navbar-fixed-top">
         <div class="container">
             <div class="navbar-header">
@@ -22,7 +45,8 @@
             </div>
             <div class="navbar-collapse collapse">
                 <ul class="nav navbar-nav">
-                    <li>@Html.ActionLink("My account", "Index", "Profil", new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("My account", "Index", ((bool)Session["company"] == true ? "AddJobOffer" : "AddJobSeekers"), new { area = "" }, null)</li>
+                    <li>@Html.ActionLink("Search", "Index", ((bool)Session["company"] == true ? "JobSeeker" : "JobOffer"), new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Chat", "Index", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("API", "Index", "Help", new { area = "" }, null)</li>
                     <li>@Html.ActionLink("Log out", "Index", "Login", new { area = "" }, null)</li>
@@ -30,6 +54,8 @@
             </div>
         </div>
     </div>
+            }
+        }
     <div class="container">
         @RenderBody()
         <hr />

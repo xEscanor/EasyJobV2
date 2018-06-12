@@ -1,123 +1,80 @@
-﻿
-@using EasyJob.Models
+﻿@using EasyJob.Models
 @model JobOfferSearchModel
 @{
-    Layout = null;
+    ViewBag.Title = "Search";
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+    if ((bool)Session["company"] == true)
+    {
+        Response.Redirect("~/Home/IndexC");
+    }
 }
+<h2>Search</h2>
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-    <style>
-        #login-div {
-            position: absolute;
-            left: 40%;
-            top: 40%;
-            border: 1px solid #ccc;
-            padding: 10px 10px;
-        }
-    </style>
-
-</head>
-<body>
-    <div id="login-div">
-        @using (Html.BeginForm("Recherche", "JobOffer", FormMethod.Post))
-        {
-    
-
-            <table>
-                <tr>
-
-                    <td>
-                        @Html.LabelFor(model => model.Experience)
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.Experience)
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        @Html.LabelFor(model => model.Profil)
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.Profil)
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        @Html.LabelFor(model => model.Diploma)
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.Diploma)
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        @Html.LabelFor(model => model.Ville)
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.Ville.Nom)
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        @Html.LabelFor(model => model.Salary)
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.Salary)
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        @Html.LabelFor(model => model.FieldOfActivity)
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.FieldOfActivity)
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        @Html.LabelFor(model => model.NomC)
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.NomC)
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        @Html.LabelFor(model => model.MotCle)
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.MotCle)
-                    </td>
-                </tr>
-
-                <tr>
-                    <td>
-                        @Html.LabelFor(model => model.Type)
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.Type)
-                    </td>
-                </tr>
-
-            </table>
-
-            <input type="submit" name="name" value="Rechercher" />
-        }
+@using (Html.BeginForm("Recherche", "JobOffer", FormMethod.Post))
+{
+    <div class="form-horizontal">
+        <h4>JobOffer</h4>
+        <hr />
+        <div class="form-group">
+            @Html.LabelFor(model => model.Experience, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Experience, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "1", @placeholder = "Experience" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Profil, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Profil, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "2", @placeholder = "Profil" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Diploma, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Diploma, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "3", @placeholder = "Diploma" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ville, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Ville.Nom, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "4", @placeholder = "Ville" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Salary, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Salary, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "5", @placeholder = "Salary" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.FieldOfActivity, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.FieldOfActivity, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "6", @placeholder = "FieldOfActivity" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.NomC, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.NomC, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "7", @placeholder = "NomC" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.MotCle, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.MotCle, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "8", @placeholder = "MotCle" } })
+            </div>
+        </div>
+        <div class="form-group">
+            @Html.LabelFor(model => model.Type, htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.EditorFor(model => model.Type, new { htmlAttributes = new { @class = "form-control", @type = "text", @id = "9", @placeholder = "Type" } })
+            </div>
+        </div>
+        <button class="btn btn-lg btn-primary" type="submit" value="Search" name="name">Search</button>
     </div>
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-</body>
-</html>
+}
+@Scripts.Render("~/Scripts/jquery-3.3.1.js")
+@Scripts.Render("~/Scripts/jquery.validate.js")
+@Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")

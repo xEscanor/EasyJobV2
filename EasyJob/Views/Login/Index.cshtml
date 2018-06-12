@@ -15,21 +15,36 @@
     <title>EasyJob</title>
 </head>
 <body class="text-center">
-    @using (Html.BeginForm("Authorize", "Login", FormMethod.Post, htmlAttributes: new { @class = "form-signin" }))
-    {
-        <img class="mb-4" src="https://getbootstrap.com/assets/brand/bootstrap-solid.svg" alt="" width="72" height="72">
-        <h1 class="h3 mb-3 font-weight-normal">Login to EasyJob</h1>
-        <label for="inputEmail" class="sr-only">Email</label>
-        @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email", @id = "inputEmail", @placeholder = "Email address" } })
-        @Html.ValidationMessageFor(model => model.Email)
-        <label for="inputPassword" class="sr-only">Password</label>
-        @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @type = "password", @id = "inputPassword", @class = "form-control", @placeholder = "Password" } })
-        @Html.ValidationMessageFor(model => model.Password)
-        <label classe="field-validation-error"> @Html.DisplayFor(model => model.LoginErrorMessage) </label>
-        <button class="btn btn-lg btn-primary btn-block" type="submit" value="Login" name="name">Login</button>
-        <button class="btn btn-lg btn-secondary btn-block" type="Clear" value="Login" name="name">Clear</button>
+    <div class="container">
+        <img class="mb-4" src="~/logo.png" alt="" height="200">
+        <div class="row">
+            <div class="col-md-6">
+                @using (Html.BeginForm("Authorize", "Login", FormMethod.Post, htmlAttributes: new { @class = "form-signin" }))
+                {
 
-    }
+                    <h1 class="h3 mb-3 font-weight-normal">Login to EasyJob</h1>
+                    <label for="inputEmail" class="sr-only">Email</label>
+                    @Html.EditorFor(model => model.Email, new { htmlAttributes = new { @class = "form-control", @type = "email", @id = "inputEmail", @placeholder = "Email address" } })
+                    @Html.ValidationMessageFor(model => model.Email)
+                    <label for="inputPassword" class="sr-only">Password</label>
+                    @Html.EditorFor(model => model.Password, new { htmlAttributes = new { @type = "password", @id = "inputPassword", @class = "form-control", @placeholder = "Password" } })
+                    @Html.ValidationMessageFor(model => model.Password)
+                    <label classe="field-validation-error"> @Html.DisplayFor(model => model.LoginErrorMessage) </label>
+                    <button class="btn btn-lg btn-primary btn-block" type="submit" value="Login" name="name">Login</button>
+
+                }
+
+            </div>
+            <div class="col-md-6">
+                <br />
+                <br />
+                <h1 class="h3 mb-3 font-weight-normal">Créez vous un compte</h1>
+                <a href="/User/AddOrEditC" class="btn btn-lg btn-danger btn-block">Je propose des emplois</a>
+                <a href="/User/AddOrEditJS" class="btn btn-lg btn-success btn-block">Je suis à la recherche d'un emploi</a>
+            </div>
+        </div>
+    </div>
+   
 </body>
 </html>
 

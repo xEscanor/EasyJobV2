@@ -1,21 +1,20 @@
 ﻿@model IEnumerable<EasyJob.Models.JobSeeker>
 
 @{
-    Layout = null;
-    if (Session["userID"] == null || (bool)Session["company"]==true)
+    ViewBag.Title = "AddJobSeeker";
+    if (Session["userID"] == null)
     {
         Response.Redirect("~/Login/Index");
     }
-}
-@{
-    ViewBag.Title = "Index";
+    if ((bool)Session["company"] == true)
+    {
+        Response.Redirect("~/Home/IndexC");
+    }
 }
 
-<h2>Index</h2>
+<h2>AddJobSeeker</h2>
+<h4>List</h4>
 
-<p>
-    @Html.ActionLink("Create New", "Create")
-</p>
 <table class="table">
     <tr>
         <th>

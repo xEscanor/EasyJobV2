@@ -14,6 +14,8 @@ namespace EasyJob.Controllers
         [HttpGet]
         public ActionResult Index()
         {
+            Session.Clear();
+            Session.Abandon();
             return View();
         }
 
