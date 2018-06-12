@@ -27,7 +27,6 @@ namespace EasyJob.Controllers
             return (from v in db.Villes
                     select v).ToList();
 
-
         }
     }
 }
