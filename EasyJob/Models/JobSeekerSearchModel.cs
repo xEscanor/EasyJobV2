@@ -11,7 +11,9 @@ namespace EasyJob.Models
         public String Diploma { get; set; }
         public Ville Ville { get; set; }
         public int? Age { get; set; }
-       
+
+     
     }
+   
 
 }

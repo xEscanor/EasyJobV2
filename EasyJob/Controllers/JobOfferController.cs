@@ -22,6 +22,8 @@ namespace EasyJob.Controllers
             var model = JobOffer.GetJobOffer(searchmodel);
             return View("Recherche", model.ToList());
         }
+
+       
        
     }
 }

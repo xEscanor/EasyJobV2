@@ -26,9 +26,10 @@
     <div id="login-div">
         @using (Html.BeginForm("Recherche", "JobSeeker", FormMethod.Post))
         {
-         
+            @Session["offreId"]
             <table>
                 <tr>
+
                     <td>
                         @Html.LabelFor(model => model.Experience)
                     </td>
@@ -53,7 +54,7 @@
                 </tr>
                 <tr>
                     <td>
-                        @Html.LabelFor(model=>model.Age)
+                        @Html.LabelFor(model => model.Age)
                     </td>
                     <td>
                         @Html.EditorFor(model => model.Age)
