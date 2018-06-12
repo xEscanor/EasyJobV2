@@ -1,22 +1,15 @@
-﻿
-@{
-       if (Session["userID"]==null || (bool)Session["company"] == false)
+﻿@{
+    ViewBag.Title = "Home";
+    if (Session["userID"] == null)
     {
         Response.Redirect("~/Login/Index");
     }
+    if ((bool)Session["company"] == false)
+    {
+        Response.Redirect("~/Home/IndexJS");
+    }
 }
 
-<!DOCTYPE html>
-
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>IndexC</title>
-</head>
-<body>
-    <div>
-        @Session["userID"].ToString()
-        @Session["company"]
-    </div>
-</body>
-</html>
+<div class="row">
+    <h1>Home Company</h1>
+</div>

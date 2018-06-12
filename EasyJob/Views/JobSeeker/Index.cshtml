@@ -2,7 +2,15 @@
 @using EasyJob.Models
 @model JobSeekerSearchModel
 @{
-    Layout = null;
+    ViewBag.Title = "Search";
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+    if ((bool)Session["company"] == false)
+    {
+        Response.Redirect("~/Home/IndexJS");
+    }
 }
 
 <!DOCTYPE html>
@@ -26,7 +34,7 @@
     <div id="login-div">
         @using (Html.BeginForm("Recherche", "JobSeeker", FormMethod.Post))
         {
-         
+
             <table>
                 <tr>
                     <td>
@@ -53,7 +61,7 @@
                 </tr>
                 <tr>
                     <td>
-                        @Html.LabelFor(model=>model.Age)
+                        @Html.LabelFor(model => model.Age)
                     </td>
                     <td>
                         @Html.EditorFor(model => model.Age)

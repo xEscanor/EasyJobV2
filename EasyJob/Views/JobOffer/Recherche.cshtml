@@ -1,17 +1,19 @@
 ﻿@model IEnumerable<EasyJob.Models.JobOffer>
 
 @{
-    Layout = null;
+    ViewBag.Title = "Result";
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+    if ((bool)Session["company"] == true)
+    {
+        Response.Redirect("~/Home/IndexC");
+    }
 }
 
-<!DOCTYPE html>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Recherche</title>
-</head>
-<body>
+<div class="row">
     <p>
         @Html.ActionLink("Create New", "Create")
     </p>
@@ -52,45 +54,58 @@
 
         @foreach (var item in Model)
         {
-        <tr>
-            <td>
-                @Html.DisplayFor(modelItem => item.Company)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Title)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Description)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Diploma)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Experience)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Salary)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Profil)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.FieldOfActivity)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Ville)
-            </td>
-            <td>
-                @Html.DisplayFor(modelItem => item.Type)
-            </td>
-            <td>
-                @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
-                @Html.ActionLink("Details", "Details", new { id = item.Id }) |
-                @Html.ActionLink("Delete", "Delete", new { id = item.Id })
-            </td>
-        </tr>
+            <tr>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Company)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Title)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Description)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Diploma)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Experience)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Salary)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Profil)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.FieldOfActivity)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Ville)
+                </td>
+                <td>
+                    @Html.DisplayFor(modelItem => item.Type)
+                </td>
+                <td>
+                    @Html.ActionLink("Edit", "Edit", new { id = item.Id }) |
+                    @Html.ActionLink("Details", "Details", new { id = item.Id }) |
+                    @Html.ActionLink("Delete", "Delete", new { id = item.Id })
+                </td>
+            </tr>
         }
 
     </table>
-</body>
-</html>
+</div>
+<br /><br />
+<div class="row">
+    <h1>Job Offers</h1>
+</div>
+<div class="row">
+    <div class="col">
+        <evil-tinder></evil-tinder>
+    </div>
+
+</div>
+@Styles.Render("~/Content/likeordislike.css")
+@Scripts.Render("https://code.jquery.com/pep/0.4.1/pep.js")
+@Scripts.Render("https://unpkg.com/can@4/dist/global/can.js")
+@Scripts.Render("~/Scripts/likeordislike.js")
