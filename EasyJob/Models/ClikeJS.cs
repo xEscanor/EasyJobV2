@@ -8,10 +8,17 @@ namespace EasyJob.Models
 {
     public class ClikeJS
     {   public int ID { get; set; } 
-        [Key]
-        public JobSeeker JobOfferId { get; set; }
-        [Key]
-        public JobSeeker JobSeekerId { get; set; }
+        
+        public int JobOfferId { get; set; }
+        
+        public int JobSeekerId { get; set; }
         public bool Like { get; set; }
+
+        public ClikeJS(bool Like, int C, int JS)
+        {
+            this.JobSeekerId = JS;
+            this.JobOfferId = C;
+            this.Like = Like;
+        }
     }
 }
