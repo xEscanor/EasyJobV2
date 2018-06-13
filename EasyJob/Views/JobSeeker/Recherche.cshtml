@@ -1,6 +1,7 @@
 ﻿@model IEnumerable<EasyJob.Models.JobSeeker>
 
 @{
+    ViewBag.Title = "Result";
     if (Session["userID"] == null)
     {
         Response.Redirect("~/Login/Index");
@@ -80,17 +81,37 @@
     
     </table>
 </div>
-<br /><br />
-<div class="row">
-    <h1>Job Offers</h1>
-</div>
-<div class="row">
-    <div class="col">
-        <evil-tinder></evil-tinder>
-    </div>
 
-</div>
-@Styles.Render("~/Content/likeordislike.css")
-@Scripts.Render("https://code.jquery.com/pep/0.4.1/pep.js")
-@Scripts.Render("https://unpkg.com/can@4/dist/global/can.js")
-@Scripts.Render("~/Scripts/likeordislike.js")
+<div class="row">
+
+
+
+    <div id="containerSwipe">
+        @foreach (var item in Model)
+        {
+            <div class="buddys" id="@(String.Format("buddy{0}",item.Id))" style="display: block;">
+                <div class="avatar" style="display: block;">
+                    <ul>
+                        <li>@Html.DisplayFor(modelItem => item.Email)</li>
+                        <li>@Html.DisplayFor(modelItem => item.Username)</li>
+                        <li>@Html.DisplayFor(modelItem => item.LastName) /li>
+                        <li>@Html.DisplayFor(modelItem => item.FirstName) </li>
+                        <li>@Html.DisplayFor(modelItem => item.BirthDay) </li>
+                        <li>@Html.DisplayFor(modelItem => item.Diploma) </li>
+                        <li>@Html.DisplayFor(modelItem => item.Experience) </li>
+                        <li>@Html.DisplayFor(modelItem => item.Gender) </li>
+                    </ul>
+                </div>
+
+                <div class="buttons row">
+                    <div class="col-sm-6"><button id="@item.Id" class="dissBtn">Dislike</button></div>
+                    <div class="col-sm-6"><button id="@item.Id" class="likeBtn">Like</button></div>
+                </div>
+            </div>
+        }
+    </div>
+    
+    <br />
+    <br />
+    <br />
+    <br />
