@@ -22,12 +22,6 @@ namespace EasyJob.Controllers
             var model = JobSeeker.GetJobSeeker(searchmodel);
             return View("Recherche", model.ToList());
         }
-        public List<Ville> GetVilles()
-        {
-            return (from v in db.Villes
-                    select v).ToList();
-
-        }
         public void Like(int id)
         {
             
@@ -35,6 +29,5 @@ namespace EasyJob.Controllers
             BDD.Add(new ClikeJS(true, (int)Session["offreId"], id));
             db.SaveChanges();
         }
-        
     }
 }

@@ -14,117 +14,51 @@ namespace EasyJob.Controllers
     {
         private EasyJobContext db = new EasyJobContext();
 
-       
         public ActionResult Index()
         {
             var session = Convert.ToInt32(Session["userID"]);
             return View(db.JobOffers.Where(x => x.Company.UserId.UserId == session).ToList());
 
             //var result = db.JobOffers.Where(x => x.Company.UserId == Session["userID"]).ToList();
-          //  if (result == null)
+            //  if (result == null)
             //    return View();
             //else
-             //   return View(result);
+            //   return View(result);
         }
-        
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            JobOffer jobOffer = db.JobOffers.Find(id);
-            if (jobOffer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(jobOffer);
-        }
-    
+
         public ActionResult Create()
         {
             return View();
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Title,Description,Diploma,Experience,Salary,Profil,Type")] JobOffer jobOffer)
+        public ActionResult Create(JobOffer jobOffer)
         {
-            if (ModelState.IsValid)
-            {
-                db.JobOffers.Add(jobOffer);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            //if(jobOffer.Diploma != "")
+            // {
+            // db.JobOffers.Add(jobOffer);
+            // db.SaveChanges();
+            // return RedirectToAction("Index");
+            // }
+            // return View(jobOffer);
 
-            return View(jobOffer);
-        }
+            var foa = db.FieldOfActivities.OrderBy(m=>m.Nom).ToList();
+            ViewBag.ListFOA = new SelectList(foa,"test","test");
 
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            JobOffer jobOffer = db.JobOffers.Find(id);
-            if (jobOffer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(jobOffer);
-        }
+            var BDD = db.Set<JobOffer>();
+            var BDD2 = db.Set<Company>();
 
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Title,Description,Diploma,Experience,Salary,Profil,Type")] JobOffer jobOffer)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(jobOffer).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(jobOffer);
-        }
-
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            JobOffer jobOffer = db.JobOffers.Find(id);
-            if (jobOffer == null)
-            {
-                return HttpNotFound();
-            }
-            return View(jobOffer);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            JobOffer jobOffer = db.JobOffers.Find(id);
-            db.JobOffers.Remove(jobOffer);
+            var session = Convert.ToInt32(Session["userID"]);
+            jobOffer.Company = db.Companies.Where(x => x.UserId.UserId == session).Single();
+            jobOffer.FieldOfActivity = db.FieldOfActivities.Where(x => x.Nom.Equals(jobOffer.FieldOfActivity)).Single();
+            jobOffer.Ville = db.Villes.Where(x => x.Nom.Equals(jobOffer.Ville)).Single();
+            BDD.Add(jobOffer);
             db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
-        public ActionResult Selectionner (int id)
-        {
-            Session["offreId"] = id;
-            return RedirectToAction("Index", "JobSeeker");
-        }
+            ViewBag.SuccesMessage = "Registration successful";
+            return View(viewName: "Create", model: new JobOffer());
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
         }
     }
 }

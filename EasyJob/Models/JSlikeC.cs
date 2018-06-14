@@ -6,7 +6,7 @@ using System.Web;
 
 namespace EasyJob.Models
 {
-    public class JSlikeC
+    public class JSlikeJO
     {
         public int ID { get; set; }
       
@@ -15,7 +15,7 @@ namespace EasyJob.Models
         public int JobOfferId { get; set; }
         public bool Like { get; set; }
 
-        public JSlikeC (bool Like , int JS , int C)
+        public JSlikeJO (bool Like , int JS , int C)
         {
             this.JobSeekerId = JS;
             this.JobOfferId = C;

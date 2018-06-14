@@ -9,9 +9,7 @@ namespace EasyJob.Models
     public class Match
     {
         public int ID { get; set; }
-        [Key]
-        public Company CompanyId { get; set; }
-        [Key]
-        public JobSeeker JobSeekerId { get; set; }
+        public int CompanyId { get; set; }
+        public int JobSeekerId { get; set; }
     }
 }
