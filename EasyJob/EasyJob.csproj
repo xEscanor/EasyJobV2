@@ -221,6 +221,7 @@
     </Compile>
     <Compile Include="Migrations\Configuration.cs" />
     <Compile Include="Models\Author.cs" />
+    <Compile Include="Models\ClikeJS.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\EasyJobContext.cs" />
     <Compile Include="Models\FieldOfActivity.cs" />
@@ -230,6 +231,8 @@
     <Compile Include="Models\JobSeeker.cs" />
     <Compile Include="Models\JobSeekerSearchLogic.cs" />
     <Compile Include="Models\JobSeekerSearchModel.cs" />
+    <Compile Include="Models\JSlikeC.cs" />
+    <Compile Include="Models\Match.cs" />
     <Compile Include="Models\Photo.cs" />
     <Compile Include="Models\User.cs" />
     <Compile Include="Models\Ville.cs" />
@@ -242,7 +245,6 @@
     <Content Include="Content\bootstrap.css" />
     <Content Include="Content\bootstrap.min.css" />
     <Content Include="Content\custom.css" />
-    <Content Include="Content\likeordislike.css" />
     <Content Include="Content\signin.css" />
     <Content Include="favicon.ico" />
     <Content Include="fonts\glyphicons-halflings-regular.svg" />
@@ -272,6 +274,7 @@
       <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
     </Content>
     <None Include="Scripts\jquery-3.3.1.intellisense.js" />
+    <Content Include="Scripts\custom.js" />
     <Content Include="Scripts\jquery-3.3.1.js" />
     <Content Include="Scripts\jquery-3.3.1.min.js" />
     <Content Include="Scripts\jquery-3.3.1.slim.js" />
@@ -281,7 +284,6 @@
     <Content Include="Scripts\jquery.validate.min.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.js" />
     <Content Include="Scripts\jquery.validate.unobtrusive.min.js" />
-    <Content Include="Scripts\likeordislike.js" />
     <Content Include="Scripts\modernizr-2.8.3.js" />
     <Content Include="logo.png" />
     <Content Include="Web.config" />

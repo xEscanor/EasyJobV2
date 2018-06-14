@@ -16,7 +16,8 @@ namespace EasyJob.Controllers
 
          public ActionResult Index()
         {
-            return View(db.JobSeekers.ToList());
+            var session = Convert.ToInt32(Session["userID"]);
+            return View(db.JobSeekers.Where(x => x.UserId.UserId == session).ToList());
         }
 
             //var result = db.JobOffers.Where(x => x.Company.UserId == Session["userID"]).ToList();
@@ -34,7 +35,7 @@ namespace EasyJob.Controllers
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,Username,LastName,FirstName,BirthDay,Age,Diploma,Experience,Gender")] JobSeeker jobSeeker)
+        public ActionResult Create([Bind(Include = "Id,UserId,Email,Username,LastName,FirstName,BirthDay,Age,Diploma,Experience,Gender")] JobSeeker jobSeeker)
         {
             JobSeeker jobseeker = (from c in db.JobSeekers
                                   where c.Id == Convert.ToInt32(Session["userID"])
@@ -68,7 +69,7 @@ namespace EasyJob.Controllers
     
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,Username,LastName,FirstName,BirthDay,Age,Diploma,Experience,Gender")] JobSeeker jobSeeker)
+        public ActionResult Edit([Bind(Include = "Id,UserId,Email,Username,LastName,FirstName,BirthDay,Age,Diploma,Experience,Gender")] JobSeeker jobSeeker)
         {
             if (ModelState.IsValid)
             {

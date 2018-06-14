@@ -13,67 +13,42 @@
     }
 }
 
-<!DOCTYPE html>
+<h2>Search</h2>
 
-<html>
-<head>
-    <meta name="viewport" content="width=device-width" />
-    <title>Login</title>
-    <style>
-        #login-div {
-            position: absolute;
-            left: 40%;
-            top: 40%;
-            border: 1px solid #ccc;
-            padding: 10px 10px;
-        }
-    </style>
-
-</head>
-<body>
-    <div id="login-div">
-        @using (Html.BeginForm("Recherche", "JobSeeker", FormMethod.Post))
-        {
-
-            <table>
-                <tr>
-                    <td>
-                        @Html.LabelFor(model => model.Experience)
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.Experience)
-                    </td>
-                <tr>
-                    <td>
-                        @Html.LabelFor(model => model.Ville)
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.Ville.Nom)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(model => model.Diploma)
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.Diploma)
-                    </td>
-                </tr>
-                <tr>
-                    <td>
-                        @Html.LabelFor(model => model.Age)
-                    </td>
-                    <td>
-                        @Html.EditorFor(model => model.Age)
-                    </td>
-                </tr>
-            </table>
-
-            <input type="submit" name="name" value="Rechercher" />
-        }
+@using (Html.BeginForm("Recherche", "JobSeeker", FormMethod.Post))
+{
+<div class="form-horizontal">
+    <h4>JobOffer</h4>
+    <hr />
+    <div class="form-group">
+        @Html.LabelFor(model => model.Experience, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Experience, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Experience" } })
+        </div>
     </div>
-    <script src="~/Scripts/jquery-3.3.1.js"></script>
-    <script src="~/Scripts/jquery.validate.js"></script>
-    <script src="~/Scripts/jquery.validate.unobtrusive.js"></script>
-</body>
-</html>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Ville, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Ville.Nom, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Experience" } })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Diploma, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Diploma, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Experience" } })
+        </div>
+    </div>
+    <div class="form-group">
+        @Html.LabelFor(model => model.Age, htmlAttributes: new { @class = "control-label col-md-2" })
+        <div class="col-md-10">
+            @Html.EditorFor(model => model.Age, new { htmlAttributes = new { @class = "form-control", @type = "text", @placeholder = "Experience" } })
+        </div>
+    </div>
+    <button class="btn btn-lg btn-primary" type="submit" value="Search" name="name">Search</button>
+
+</div>
+
+        }
+        @Scripts.Render("~/Scripts/jquery-3.3.1.js")
+        @Scripts.Render("~/Scripts/jquery.validate.js")
+        @Scripts.Render("~/Scripts/jquery.validate.unobtrusive.js")

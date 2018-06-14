@@ -28,5 +28,13 @@ namespace EasyJob.Controllers
                     select v).ToList();
 
         }
+        public void Like(int id)
+        {
+            
+            var BDD = db.Set<ClikeJS>();
+            BDD.Add(new ClikeJS(true, (int)Session["offreId"], id));
+            db.SaveChanges();
+        }
+        
     }
 }
