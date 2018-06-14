@@ -61,8 +61,6 @@ namespace EasyJob.Controllers
             }
             else
             {
-
-
                 BDD.Add(userModel);
                 db.SaveChanges();
 

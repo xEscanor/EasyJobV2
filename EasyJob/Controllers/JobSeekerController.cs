@@ -10,9 +10,9 @@ namespace EasyJob.Controllers
     public class JobSeekerController : Controller
     {
         private EasyJobContext db = new EasyJobContext();
-        
+
         public ActionResult Index()
-        {            
+        {
             return View();
         }
 
@@ -20,7 +20,7 @@ namespace EasyJob.Controllers
         {
             var JobSeeker = new JobSeekerSearchLogic();
             var model = JobSeeker.GetJobSeeker(searchmodel);
-            return View("Recherche",model.ToList());
+            return View("Recherche", model.ToList());
         }
         public List<Ville> GetVilles()
         {
