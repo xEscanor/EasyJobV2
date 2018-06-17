@@ -60,5 +60,10 @@ namespace EasyJob.Controllers
             return View(viewName: "Create", model: new JobOffer());
 
         }
+        public ActionResult Selectionner(int id)
+        {
+            Session["offreId"] = id;
+            return RedirectToAction("Index", "JobSeeker");
+        }
     }
 }
