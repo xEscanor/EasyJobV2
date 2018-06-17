@@ -40,7 +40,7 @@ namespace EasyJob.Models
         [Required]
         public Typee Type { get; set; }
 
-       
+
     }
     public enum Typee
     {
@@ -56,5 +56,11 @@ namespace EasyJob.Models
         Technicien,
         Directeur,
         Chercheur
+    }
+
+    public enum FieldOfActivity
+    {
+        test,
+        test2
     }
 }

@@ -16,104 +16,31 @@ namespace EasyJob.Controllers
 
         public ActionResult Index()
         {
+            var session = Convert.ToInt32(Session["userID"]);
+            //return View(db.JobOffers.Where(x => x.Company.UserId.UserId == session).ToList());
+
             return View(db.Companies.ToList());
         }
-
-        public ActionResult Details(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Company company = db.Companies.Find(id);
-            if (company == null)
-            {
-                return HttpNotFound();
-            }
-            return View(company);
-        }
-
 
         public ActionResult Create()
         {
             return View();
         }
 
-
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Create([Bind(Include = "Id,Email,Username,CompanyName")] Company company)
+        public ActionResult Create(Company company)
         {
-            if (ModelState.IsValid)
-            {
-                db.Companies.Add(company);
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
+            var BDD = db.Set<Company>();
 
-            return View(company);
-        }
-
-
-        public ActionResult Edit(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Company company = db.Companies.Find(id);
-            if (company == null)
-            {
-                return HttpNotFound();
-            }
-            return View(company);
-        }
-
-
-        [HttpPost]
-        [ValidateAntiForgeryToken]
-        public ActionResult Edit([Bind(Include = "Id,Email,Username,CompanyName")] Company company)
-        {
-            if (ModelState.IsValid)
-            {
-                db.Entry(company).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
-            }
-            return View(company);
-        }
-
-        public ActionResult Delete(int? id)
-        {
-            if (id == null)
-            {
-                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
-            }
-            Company company = db.Companies.Find(id);
-            if (company == null)
-            {
-                return HttpNotFound();
-            }
-            return View(company);
-        }
-
-        [HttpPost, ActionName("Delete")]
-        [ValidateAntiForgeryToken]
-        public ActionResult DeleteConfirmed(int id)
-        {
-            Company company = db.Companies.Find(id);
-            db.Companies.Remove(company);
+            var session = Convert.ToInt32(Session["userID"]);
+            company.UserId = db.Users.Where(x => x.UserId == Convert.ToInt32(Session["userID"])).Single();
+            //jobOffer.Ville = db.Villes.Where(x => x.Id.Equals(jobOffer.Company.VilleId)).Single();
+            BDD.Add(company);
             db.SaveChanges();
-            return RedirectToAction("Index");
-        }
 
-        protected override void Dispose(bool disposing)
-        {
-            if (disposing)
-            {
-                db.Dispose();
-            }
-            base.Dispose(disposing);
+            ViewBag.SuccesMessage = "Registration successful";
+            return View(viewName: "Create", model: new JobOffer());
         }
     }
 }

@@ -223,7 +223,6 @@
     <Compile Include="Models\ClikeJS.cs" />
     <Compile Include="Models\Company.cs" />
     <Compile Include="Models\EasyJobContext.cs" />
-    <Compile Include="Models\FieldOfActivity.cs" />
     <Compile Include="Models\JobOffer.cs" />
     <Compile Include="Models\JobOfferSearchLogic.cs" />
     <Compile Include="Models\JobOfferSearchModel.cs" />

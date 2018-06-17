@@ -31,8 +31,6 @@ namespace EasyJob.Controllers
             }
             else
             {
-
-
                 //test pour faire des updates
                 var result = BDD.SingleOrDefault(b => b.Email == "test");
                 if (result != null)

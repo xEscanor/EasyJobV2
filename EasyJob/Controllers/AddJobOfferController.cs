@@ -43,22 +43,16 @@ namespace EasyJob.Controllers
             // }
             // return View(jobOffer);
 
-            var foa = db.FieldOfActivities.OrderBy(m=>m.Nom).ToList();
-            ViewBag.ListFOA = new SelectList(foa,"test","test");
-
             var BDD = db.Set<JobOffer>();
             var BDD2 = db.Set<Company>();
 
             var session = Convert.ToInt32(Session["userID"]);
             jobOffer.Company = db.Companies.Where(x => x.UserId.UserId == session).Single();
-            jobOffer.FieldOfActivity = db.FieldOfActivities.Where(x => x.Nom.Equals(jobOffer.FieldOfActivity)).Single();
-            jobOffer.Ville = db.Villes.Where(x => x.Nom.Equals(jobOffer.Ville)).Single();
-            BDD.Add(jobOffer);
+            Console.WriteLine("test");
+            jobOffer.Ville = db.Villes.Where(x => x.Id == jobOffer.Company.VilleId.Id).Single();
             db.SaveChanges();
-
             ViewBag.SuccesMessage = "Registration successful";
             return View(viewName: "Create", model: new JobOffer());
-
         }
     }
 }
