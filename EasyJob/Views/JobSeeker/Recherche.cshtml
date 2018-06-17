@@ -104,8 +104,8 @@
                 </div>
 
                 <div class="buttons row">
-                    <div class="col-sm-6"><button id="@item.Id" class="dissBtn" onclick="location.href='@Url.Action("Dislike", "JobSeeker" , new {id = item.Id})'">'>Dislike</button></div>
-                    <div class="col-sm-6"><button id="@item.Id" class="likeBtn"onclick="location.href='@Url.Action("Like", "JobSeeker",new {id = item.Id})'">'">Like</button></div>
+                    <div class="col-sm-6"><button id="@item.Id" class="dissBtn dissBtnJS">'>Dislike</button></div>
+                    <div class="col-sm-6"><button id="@item.Id" class="likeBtn likeBtnJS">'">Like</button></div>
                 </div>
             </div>
         }

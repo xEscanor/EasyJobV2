@@ -24,7 +24,7 @@ namespace EasyJob.Controllers
         }
         public void Like(int id)
         {
-            
+            System.Diagnostics.Debug.WriteLine(id);
             var BDD = db.Set<ClikeJS>();
             BDD.Add(new ClikeJS(true, (int)Session["offreId"], id));
             db.SaveChanges();
