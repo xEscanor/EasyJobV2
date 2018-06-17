@@ -33,7 +33,7 @@ namespace EasyJob.Models
                     result = result.Where(x => x.Salary >= searchModel.Salary);
 
                 if (!string.IsNullOrEmpty(searchModel.FieldOfActivity))
-                    result = result.Where(x => x.FieldOfActivity.Nom.Contains(searchModel.FieldOfActivity));
+                    result = result.Where(x => x.FieldOfActivity.ToString().Contains(searchModel.FieldOfActivity));
 
                 if (!string.IsNullOrEmpty(searchModel.Type))
                     result = result.Where(x => x.Type.ToString().Equals(searchModel.Type));
