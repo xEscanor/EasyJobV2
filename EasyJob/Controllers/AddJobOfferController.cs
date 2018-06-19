@@ -28,6 +28,7 @@ namespace EasyJob.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.Id = new SelectList(db.Villes, "Id", "Nom");
             return View();
         }
 
@@ -35,25 +36,20 @@ namespace EasyJob.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(JobOffer jobOffer)
         {
-            //if(jobOffer.Diploma != "")
-            // {
-            // db.JobOffers.Add(jobOffer);
-            // db.SaveChanges();
-            // return RedirectToAction("Index");
-            // }
-            // return View(jobOffer);
-
+            ViewBag.Id = new SelectList(db.Villes, "Id", "Nom");
             var BDD = db.Set<JobOffer>();
-            var BDD2 = db.Set<Company>();
+           //var BDD2 = db.Set<Company>()
 
             var session = Convert.ToInt32(Session["userID"]);
             jobOffer.Company = db.Companies.Where(x => x.UserId.UserId == session).Single();
-            Console.WriteLine("test");
-            jobOffer.Ville = db.Villes.Where(x => x.Id == jobOffer.Company.VilleId.Id).Single();
+            //if(ModelState.IsValid)
+            BDD.Add(jobOffer);
             db.SaveChanges();
             ViewBag.SuccesMessage = "Registration successful";
             return View(viewName: "Create", model: new JobOffer());
+            //return RedirectToAction("Index");
         }
+
         public ActionResult Selectionner(int id)
         {
             Session["offreId"] = id;

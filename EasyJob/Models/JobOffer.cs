@@ -39,15 +39,15 @@ namespace EasyJob.Models
 
         [Required]
         public Typee Type { get; set; }
-
-
     }
+
     public enum Typee
     {
         CDI = 1,
         CDD = 2,
         Stage = 3
     }
+
     public enum Profil
     {
         Cadre,

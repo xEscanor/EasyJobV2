@@ -43,8 +43,6 @@ namespace EasyJob.Models
 
         [Required]
         public IEnumerable<Photo> Photos { get; set; }
-
-
     }
     public enum Gender
     {

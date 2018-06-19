@@ -211,6 +211,7 @@
     <Compile Include="Controllers\CompaniesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\JobOfferController.cs" />
+    <Compile Include="Controllers\JobOfferstrucsController.cs" />
     <Compile Include="Controllers\JobSeekerController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
     <Compile Include="Controllers\UserController.cs" />
@@ -318,6 +319,11 @@
     <Content Include="Views\AddCompany\Delete.cshtml" />
     <Content Include="Views\AddCompany\Edit.cshtml" />
     <Content Include="Views\AddCompany\Index.cshtml" />
+    <Content Include="Views\JobOfferstrucs\Create.cshtml" />
+    <Content Include="Views\JobOfferstrucs\Delete.cshtml" />
+    <Content Include="Views\JobOfferstrucs\Details.cshtml" />
+    <Content Include="Views\JobOfferstrucs\Edit.cshtml" />
+    <Content Include="Views\JobOfferstrucs\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />
