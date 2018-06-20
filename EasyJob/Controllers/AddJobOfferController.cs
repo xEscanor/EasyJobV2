@@ -36,18 +36,19 @@ namespace EasyJob.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(JobOffer jobOffer)
         {
-            ViewBag.Id = new SelectList(db.Villes, "Id", "Nom");
+            jobOffer.Ville = db.Villes.Where(x => x.Id == jobOffer.Ville.Id).Single();
             var BDD = db.Set<JobOffer>();
            //var BDD2 = db.Set<Company>()
 
             var session = Convert.ToInt32(Session["userID"]);
             jobOffer.Company = db.Companies.Where(x => x.UserId.UserId == session).Single();
+            
             //if(ModelState.IsValid)
             BDD.Add(jobOffer);
             db.SaveChanges();
             ViewBag.SuccesMessage = "Registration successful";
-            return View(viewName: "Create", model: new JobOffer());
-            //return RedirectToAction("Index");
+            return RedirectToAction("Index", "AddJobOffer");
+
         }
 
         public ActionResult Selectionner(int id)

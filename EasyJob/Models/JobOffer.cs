@@ -39,6 +39,7 @@ namespace EasyJob.Models
 
         [Required]
         public Typee Type { get; set; }
+
     }
 
     public enum Typee
