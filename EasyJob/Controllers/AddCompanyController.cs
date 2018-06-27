@@ -24,6 +24,7 @@ namespace EasyJob.Controllers
 
         public ActionResult Create()
         {
+            ViewBag.Id = new SelectList(db.Villes, "Id", "Nom");
             return View();
         }
 
@@ -34,13 +35,13 @@ namespace EasyJob.Controllers
             var BDD = db.Set<Company>();
 
             var session = Convert.ToInt32(Session["userID"]);
-            company.UserId = db.Users.Where(x => x.UserId == Convert.ToInt32(Session["userID"])).Single();
+            company.UserId = db.Users.Where(x => x.UserId == session).Single();
             company.VilleId = db.Villes.Where(x => x.Id == company.VilleId.Id).Single();
             BDD.Add(company);
             db.SaveChanges();
 
             ViewBag.SuccesMessage = "Registration successful";
-            return View(viewName: "Create", model: new JobOffer());
+            return RedirectToAction("Index", "AddJobOffer");
         }
 
 
