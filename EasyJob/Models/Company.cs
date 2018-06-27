@@ -26,15 +26,9 @@ namespace EasyJob.Models
 
         //foreign key
         [Required]
-        public string FieldOfActivityId { get; set; }
+        public FieldOfActivity FieldOfActivity { get; set; }
 
         [Required]
         public User UserId { get; set; }
-
-        public enum FieldOfActivity
-        {
-            test,
-            test2
-        }
     }
 }

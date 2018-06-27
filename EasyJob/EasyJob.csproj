@@ -319,11 +319,6 @@
     <Content Include="Views\AddCompany\Delete.cshtml" />
     <Content Include="Views\AddCompany\Edit.cshtml" />
     <Content Include="Views\AddCompany\Index.cshtml" />
-    <Content Include="Views\JobSeekerstest\Create.cshtml" />
-    <Content Include="Views\JobSeekerstest\Delete.cshtml" />
-    <Content Include="Views\JobSeekerstest\Details.cshtml" />
-    <Content Include="Views\JobSeekerstest\Edit.cshtml" />
-    <Content Include="Views\JobSeekerstest\Index.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

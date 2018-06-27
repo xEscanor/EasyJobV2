@@ -18,12 +18,6 @@ namespace EasyJob.Controllers
         {
             var session = Convert.ToInt32(Session["userID"]);
             return View(db.JobOffers.Where(x => x.Company.UserId.UserId == session).ToList());
-
-            //var result = db.JobOffers.Where(x => x.Company.UserId == Session["userID"]).ToList();
-            //  if (result == null)
-            //    return View();
-            //else
-            //   return View(result);
         }
 
         public ActionResult Create()
@@ -101,7 +95,7 @@ namespace EasyJob.Controllers
         {
             var session = Convert.ToInt32(Session["userID"]);
             
-            jobOffer.Company = db.Companies.Where(x=>x.UserId.UserId==session).Single();
+            //jobOffer.Company = db.Companies.Where(x=>x.UserId.UserId==session).Single();
             jobOffer.Ville = db.Villes.Where(x => x.Id == jobOffer.Ville.Id).Single();
 
             db.Entry(jobOffer).State = EntityState.Modified;

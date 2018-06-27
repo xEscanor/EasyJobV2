@@ -17,14 +17,14 @@ namespace EasyJob.Controllers
         // GET: api/Companies
         public IQueryable<Company> GetCompanies()
         {
-            return db.Companies.Include(b => b.VilleId).Include(b=>b.FieldOfActivityId).Include(b=>b.UserId);
+            return db.Companies.Include(b => b.VilleId).Include(b=>b.FieldOfActivity).Include(b=>b.UserId);
         }
 
         // GET: api/authors/5
         [ResponseType(typeof(Company))]
         public async Task<IHttpActionResult> GetCompany(int id)
         {
-            Company company = await db.Companies.Include(b => b.VilleId).Include(b => b.FieldOfActivityId).SingleOrDefaultAsync(b=>b.Id == id);
+            Company company = await db.Companies.Include(b => b.VilleId).Include(b => b.FieldOfActivity).SingleOrDefaultAsync(b=>b.Id == id);
             if (company == null)
             {
                 return NotFound();
@@ -68,7 +68,7 @@ namespace EasyJob.Controllers
         [ResponseType(typeof(Author))]
         public async Task<IHttpActionResult> DeleteCompany(int id)
         {
-            Company company = await db.Companies.Include(b => b.VilleId).Include(b => b.FieldOfActivityId).SingleOrDefaultAsync(b => b.Id == id);
+            Company company = await db.Companies.Include(b => b.VilleId).Include(b => b.FieldOfActivity).SingleOrDefaultAsync(b => b.Id == id);
             if (company == null)
             {
                 return NotFound();
