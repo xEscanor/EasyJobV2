@@ -41,9 +41,33 @@ namespace EasyJob.Controllers
             db.SaveChanges();
 
             ViewBag.SuccesMessage = "Registration successful";
-            return RedirectToAction("Index", "AddJobOffer");
+            return RedirectToAction("Index", "AddCompany");
         }
 
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            Company company = db.Companies.Find(id);
+            if (company == null)
+            {
+                return HttpNotFound();
+            }
+            return View(company);
+        }
+
+        // POST: JobSeekerstest/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            Company company = db.Companies.Find(id);
+            db.Companies.Remove(company);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
 
     }
 }
