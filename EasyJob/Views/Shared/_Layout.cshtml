@@ -47,18 +47,21 @@
                     <div class="navbar-collapse collapse">
                         <ul class="nav navbar-nav">
 
-                            if ((bool)Session["company"] == true)
+                            @if ((bool)Session["company"] == true)
                             {
-                            <li>@Html.ActionLink("Mon compte", "Index", ((bool)Session["userFC"] == true ? "AddCompany/create" : "AddJobSeekers"), new { area = "" }, null)</li>
+                                <li>@Html.ActionLink("Mon compte", "Index", ((bool)Session["userFC"] == true ? "AddCompany/create" : "AddJobSeekers"), new { area = "" }, null)</li>
+
+                                <li>@Html.ActionLink("Mes offres d'emploi", "Index", ((bool)Session["company"] == true ? "AddJobOffer" : "AddJobSeekers"), new { area = "" }, null)</li>
                             }
                             else
                             {
-                            <li> @Html.ActionLink("Mon compte2", "Index", ((bool)Session["userFC"] == true ? "AddCompany/create" : "AddCompany"), new { area = "" }, null) </li>
+                                <li> @Html.ActionLink("Mon compte", "Index", ((bool)Session["userFC"] == true ? "AddJobSeekers/create" : "AddJobSeeker"), new { area = "" }, null) </li>
                             }
 
-                            <li>@Html.ActionLink("Mes offres d'emploi", "Index", ((bool)Session["company"] == true ? "AddJobOffer" : "AddJobSeekers"), new { area = "" }, null)</li>
-                            if ((bool)Session["jobseeker"] == true)
-                            <li>@Html.ActionLink("Search", "Index", ((bool)Session["company"] == true ? "JobSeeker" : "JobOffer"), new { area = "" }, null)</li>
+                          
+                            @if ((bool)Session["company"] == false)
+                            {
+                                <li>@Html.ActionLink("Search", "Index", ((bool)Session["company"] == true ? "JobSeeker" : "JobOffer"), new { area = "" }, null)</li>
                             }
                             <li>@Html.ActionLink("Log out", "Index", "Login", new { area = "" }, null)</li>
                         </ul>
