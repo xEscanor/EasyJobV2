@@ -36,6 +36,17 @@ namespace EasyJob.Controllers
             jobseeker.Ville = db.Villes.Where(x => x.Id == jobseeker.Ville.Id).Single();
             BDD.Add(jobseeker);
             db.SaveChanges();
+
+
+
+            var bdd2 = db.Set<User>();
+            var result = bdd2.SingleOrDefault(b => b.UserId == session);
+            if (result != null)
+            {
+                result.FirstConnexion = false;
+                db.SaveChanges();
+            }
+
             ViewBag.SuccesMessage = "Registration successful";
             return RedirectToAction("Index", "AddJobSeekers");
         }

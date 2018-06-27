@@ -40,14 +40,14 @@ namespace EasyJob.Controllers
             if (BDD.Any(x => x.Email == userModel.Email))
             {
                 ViewBag.DuplicateMessage = "Username already exist.";
-                return View("AddOrEdit", userModel);
+                return View("AddOrEditC", userModel);
             }
 
             BDD.Add(userModel);
             db.SaveChanges();
 
             ViewBag.SuccesMessage = "Registration successful";
-            return View(viewName: "AddOrEditC", model: new User());
+            return RedirectToAction("Index", "Login");
         }
 
         public ActionResult AddOrEditJS(User userModel)
@@ -57,7 +57,7 @@ namespace EasyJob.Controllers
             if (BDD.Any(x => x.Email == userModel.Email))
             {
                 ViewBag.DuplicateMessage = "Username already exist.";
-                return View("AddOrEdit", userModel);
+                return View("AddOrEditJs", userModel);
             }
             else
             {
@@ -65,7 +65,7 @@ namespace EasyJob.Controllers
                 db.SaveChanges();
 
                 ViewBag.SuccesMessage = "Registration successful";
-                return View(viewName: "AddOrEditJS", model: new User());
+                return RedirectToAction("Index", "Login");
             }
         }
     }

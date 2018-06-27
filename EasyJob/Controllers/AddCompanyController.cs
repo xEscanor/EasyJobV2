@@ -33,12 +33,21 @@ namespace EasyJob.Controllers
         public ActionResult Create(Company company)
         {
             var BDD = db.Set<Company>();
-
+            
             var session = Convert.ToInt32(Session["userID"]);
             company.UserId = db.Users.Where(x => x.UserId == session).Single();
             company.VilleId = db.Villes.Where(x => x.Id == company.VilleId.Id).Single();
             BDD.Add(company);
             db.SaveChanges();
+
+            var bdd2 = db.Set<User>();
+            var result = bdd2.SingleOrDefault(b => b.UserId==session);
+            if (result != null)
+            {
+                result.FirstConnexion = false;
+                db.SaveChanges();
+            }
+
 
             ViewBag.SuccesMessage = "Registration successful";
             return RedirectToAction("Index", "AddCompany");
