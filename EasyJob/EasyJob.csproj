@@ -214,6 +214,7 @@
     <Compile Include="Controllers\JobSeekerController.cs" />
     <Compile Include="Controllers\JobSeekerstestController.cs" />
     <Compile Include="Controllers\LoginController.cs" />
+    <Compile Include="Controllers\MatchesController.cs" />
     <Compile Include="Controllers\UserController.cs" />
     <Compile Include="Controllers\ValuesController.cs" />
     <Compile Include="Global.asax.cs">
@@ -324,6 +325,8 @@
     <Content Include="Views\JobSeekerstest\Details.cshtml" />
     <Content Include="Views\JobSeekerstest\Edit.cshtml" />
     <Content Include="Views\JobSeekerstest\Index.cshtml" />
+    <Content Include="Views\Matches\IndexJs.cshtml" />
+    <Content Include="Views\Matches\IndexC.cshtml" />
   </ItemGroup>
   <ItemGroup>
     <Folder Include="App_Data\" />

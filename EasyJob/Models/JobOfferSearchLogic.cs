@@ -9,12 +9,24 @@ namespace EasyJob.Models
     {
 
         private EasyJobContext db = new EasyJobContext();
-        public IQueryable<JobOffer> GetJobOffer(JobOfferSearchModel searchModel)
+        public IQueryable<JobOffer> GetJobOffer(JobOfferSearchModel searchModel,int JSid)
         {
+          
             var result = db.JobOffers.AsQueryable();
+
             if (searchModel != null)
-            {
-                if (!string.IsNullOrEmpty(searchModel.Profil))
+                {
+
+                var test = from p in db.JSlikeCs
+                           where p.JobSeekerId == JSid
+                           select p.JobOfferId;
+
+                foreach (int element in test)
+                    {
+                        result = result.Where(x => x.Id != element);
+                    };
+
+                    if (!string.IsNullOrEmpty(searchModel.Profil))
                     result = result.Where(x => x.Profil.ToString().Equals(searchModel.Profil));
 
                 if (!string.IsNullOrEmpty(searchModel.Ville.Nom))
