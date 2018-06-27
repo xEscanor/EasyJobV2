@@ -52,13 +52,15 @@
                                 <li>@Html.ActionLink("Mon compte", "Index", ((bool)Session["userFC"] == true ? "AddCompany/create" : "AddJobSeekers"), new { area = "" }, null)</li>
 
                                 <li>@Html.ActionLink("Mes offres d'emploi", "Index", ((bool)Session["company"] == true ? "AddJobOffer" : "AddJobSeekers"), new { area = "" }, null)</li>
+
+
                             }
                             else
                             {
                                 <li> @Html.ActionLink("Mon compte", "Index", ((bool)Session["userFC"] == true ? "AddJobSeekers/create" : "AddJobSeeker"), new { area = "" }, null) </li>
                             }
+                            <li> @Html.ActionLink("Mes Matchs", "Index", ((bool)Session["company"] == true ? "Matches/IndexC" : "Matches/IndexJs"), new { area = "" }, null) </li>
 
-                          
                             @if ((bool)Session["company"] == false)
                             {
                                 <li>@Html.ActionLink("Search", "Index", ((bool)Session["company"] == true ? "JobSeeker" : "JobOffer"), new { area = "" }, null)</li>
