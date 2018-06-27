@@ -55,7 +55,7 @@ namespace EasyJob.Controllers
             return View(jobSeeker);
         }
 
-       
+
         [HttpPost]
         [ValidateAntiForgeryToken]
         public ActionResult Edit(JobSeeker jobSeeker)
@@ -64,10 +64,36 @@ namespace EasyJob.Controllers
             jobSeeker.UserId = db.Users.Where(x => x.UserId == session).Single();
             jobSeeker.Ville = db.Villes.Where(x => x.Id == jobSeeker.Ville.Id).Single();
 
-                db.Entry(jobSeeker).State = EntityState.Modified;
-                db.SaveChanges();
-                return RedirectToAction("Index");
+            db.Entry(jobSeeker).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
 
+        }
+
+        // GET: JobSeekerstest/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            JobSeeker jobSeeker = db.JobSeekers.Find(id);
+            if (jobSeeker == null)
+            {
+                return HttpNotFound();
+            }
+            return View(jobSeeker);
+        }
+
+        // POST: JobSeekerstest/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            JobSeeker jobSeeker = db.JobSeekers.Find(id);
+            db.JobSeekers.Remove(jobSeeker);
+            db.SaveChanges();
+            return RedirectToAction("Index");
         }
     }
 }
