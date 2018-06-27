@@ -36,25 +36,63 @@ namespace EasyJob.Controllers
         [ValidateAntiForgeryToken]
         public ActionResult Create(JobOffer jobOffer)
         {
-            jobOffer.Ville = db.Villes.Where(x => x.Id == jobOffer.Ville.Id).Single();
             var BDD = db.Set<JobOffer>();
-           //var BDD2 = db.Set<Company>()
-
+            jobOffer.Ville = db.Villes.Where(x => x.Id == jobOffer.Ville.Id).Single();
             var session = Convert.ToInt32(Session["userID"]);
             jobOffer.Company = db.Companies.Where(x => x.UserId.UserId == session).Single();
-            
-            //if(ModelState.IsValid)
+
             BDD.Add(jobOffer);
             db.SaveChanges();
             ViewBag.SuccesMessage = "Registration successful";
             return RedirectToAction("Index", "AddJobOffer");
-
         }
 
         public ActionResult Selectionner(int id)
         {
             Session["offreId"] = id;
             return RedirectToAction("Index", "JobSeeker");
+        }
+
+        // GET: JobSeekerstest/Delete/5
+        public ActionResult Delete(int? id)
+        {
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            JobOffer jobOffer = db.JobOffers.Find(id);
+            if (jobOffer == null)
+            {
+                return HttpNotFound();
+            }
+            else
+            {
+                db.JobOffers.Remove(jobOffer);
+                db.SaveChanges();
+            }
+            ViewBag.SuccesMessage = "Deletion successful";
+            return RedirectToAction("Index", "AddJobOffer");
+        }
+
+        public ActionResult Edit()
+        {
+            ViewBag.Id = new SelectList(db.Villes, "Id", "Nom");
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public ActionResult Edit(int? id)
+        {
+           
+           JobOffer jobOffer = db.JobOffers.Find(id);
+         
+                jobOffer.Ville = db.Villes.Where(x => x.Id == jobOffer.Ville.Id).Single();
+                db.Entry(jobOffer).State = EntityState.Modified;
+               db.SaveChanges();
+           
+            ViewBag.SuccesMessage = "Update successful";
+            return RedirectToAction("Index", "AddJobOffer");
         }
     }
 }

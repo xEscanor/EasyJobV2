@@ -1,5 +1,6 @@
 ﻿@model EasyJob.Models.JobOffer
-
+@using System.Linq;
+@using System.Data.Entity;
 @{
     ViewBag.Title = "Edit";
 }
@@ -10,7 +11,7 @@
 @using (Html.BeginForm())
 {
     @Html.AntiForgeryToken()
-    
+
     <div class="form-horizontal">
         <h4>JobOffer</h4>
         <hr />
@@ -46,6 +47,14 @@
             <div class="col-md-10">
                 @Html.EditorFor(model => model.Experience, new { htmlAttributes = new { @class = "form-control" } })
                 @Html.ValidationMessageFor(model => model.Experience, "", new { @class = "text-danger" })
+            </div>
+        </div>
+
+        <div class="form-group">
+            @Html.LabelFor(model => model.Ville, "Ville", htmlAttributes: new { @class = "control-label col-md-2" })
+            <div class="col-md-10">
+                @Html.DropDownListFor(model => model.Ville.Id, new SelectList(ViewBag.Id, "Value", "Text"))
+                @Html.ValidationMessageFor(model => model.Ville.Nom, "", new { @class = "text-danger" })
             </div>
         </div>
 

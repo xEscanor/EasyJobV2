@@ -35,7 +35,7 @@ namespace EasyJob.Controllers
 
             var session = Convert.ToInt32(Session["userID"]);
             company.UserId = db.Users.Where(x => x.UserId == Convert.ToInt32(Session["userID"])).Single();
-            //jobOffer.Ville = db.Villes.Where(x => x.Id.Equals(jobOffer.Company.VilleId)).Single();
+            company.VilleId = db.Villes.Where(x => x.Id == company.VilleId.Id).Single();
             BDD.Add(company);
             db.SaveChanges();
 
