@@ -65,34 +65,49 @@ namespace EasyJob.Controllers
             {
                 return HttpNotFound();
             }
-            else
-            {
-                db.JobOffers.Remove(jobOffer);
-                db.SaveChanges();
-            }
-            ViewBag.SuccesMessage = "Deletion successful";
-            return RedirectToAction("Index", "AddJobOffer");
+            return View(jobOffer);
         }
 
-        public ActionResult Edit()
+        // POST: JobSeekerstest/Delete/5
+        [HttpPost, ActionName("Delete")]
+        [ValidateAntiForgeryToken]
+        public ActionResult DeleteConfirmed(int id)
+        {
+            JobOffer jobOffer = db.JobOffers.Find(id);
+            db.JobOffers.Remove(jobOffer);
+            db.SaveChanges();
+            return RedirectToAction("Index");
+        }
+
+        public ActionResult Edit(int? id)
         {
             ViewBag.Id = new SelectList(db.Villes, "Id", "Nom");
-            return View();
+            if (id == null)
+            {
+                return new HttpStatusCodeResult(HttpStatusCode.BadRequest);
+            }
+            JobOffer jobOffer = db.JobOffers.Find(id);
+            if (jobOffer == null)
+            {
+                return HttpNotFound();
+            }
+            return View(jobOffer);
         }
+
 
         [HttpPost]
         [ValidateAntiForgeryToken]
-        public ActionResult Edit(int? id)
+        public ActionResult Edit(JobOffer jobOffer)
         {
-           
-           JobOffer jobOffer = db.JobOffers.Find(id);
-         
-                jobOffer.Ville = db.Villes.Where(x => x.Id == jobOffer.Ville.Id).Single();
-                db.Entry(jobOffer).State = EntityState.Modified;
-               db.SaveChanges();
-           
-            ViewBag.SuccesMessage = "Update successful";
-            return RedirectToAction("Index", "AddJobOffer");
+            var session = Convert.ToInt32(Session["userID"]);
+            
+            jobOffer.Company = db.Companies.Where(x=>x.UserId.UserId==session).Single();
+            jobOffer.Ville = db.Villes.Where(x => x.Id == jobOffer.Ville.Id).Single();
+
+            db.Entry(jobOffer).State = EntityState.Modified;
+            db.SaveChanges();
+            return RedirectToAction("Index");
+
         }
     }
 }

@@ -42,5 +42,7 @@ namespace EasyJob.Controllers
             ViewBag.SuccesMessage = "Registration successful";
             return View(viewName: "Create", model: new JobOffer());
         }
+
+
     }
 }

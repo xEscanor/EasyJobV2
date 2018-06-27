@@ -40,9 +40,6 @@ namespace EasyJob.Models
         public int Experience { get; set; }
 
         public Gender Gender { get; set; }
-
-        [Required]
-        public IEnumerable<Photo> Photos { get; set; }
     }
     public enum Gender
     {
