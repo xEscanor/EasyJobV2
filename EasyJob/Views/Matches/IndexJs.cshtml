@@ -1,0 +1,67 @@
+﻿@model IEnumerable<EasyJob.Models.JobOffer>
+
+@{
+    ViewBag.Title = "AddJobOffer";
+    if (Session["userID"] == null)
+    {
+        Response.Redirect("~/Login/Index");
+    }
+    if ((bool)Session["company"] == true)
+    {
+        Response.Redirect("~/Home/IndexC");
+    }
+}
+
+
+
+<h2>Mes Matchs</h2>
+<h4>List</h4>
+
+<table class="table">
+    <tr>
+      
+        <th>
+            @Html.DisplayNameFor(model => model.Title)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Description)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Diploma)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.Experience)
+        </th>
+        <th>
+            @Html.DisplayNameFor(model => model.FieldOfActivity)
+        </th>
+    
+    </tr>
+
+    @foreach (var item in Model)
+    {
+    <tr>
+ 
+        <td>
+            @Html.DisplayFor(modelItem => item.Title)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Description)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Diploma)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.Experience)
+        </td>
+        <td>
+            @Html.DisplayFor(modelItem => item.FieldOfActivity)
+        </td>
+    
+        <td>
+            @Html.DisplayFor(modelItem => item.Profil)
+        </td>
+    </tr>
+    }
+
+</table>

@@ -46,7 +46,17 @@ namespace EasyJob.Controllers
             }
             else
             {
-                RedirectToAction("JobSeeker", "Match", id);
+                System.Diagnostics.Debug.WriteLine(id);
+                var BDD = db.Set<ClikeJS>();
+                BDD.Add(new ClikeJS(true, (int)Session["offreId"], id));
+                db.SaveChanges();
+
+                //realise le match
+
+                System.Diagnostics.Debug.WriteLine(id);
+                var BDD2 = db.Set<Match>();
+                BDD2.Add(new Match((int)Session["offreId"], id));
+                db.SaveChanges();
             }
         }
 
@@ -58,6 +68,8 @@ namespace EasyJob.Controllers
             db.SaveChanges();
         }
 
+        /* Plus utilisé dus au clic qui est bloqué 
+         
         public void Match(int id)
         {
             System.Diagnostics.Debug.WriteLine(id);
@@ -65,5 +77,6 @@ namespace EasyJob.Controllers
             BDD.Add(new Match((int)Session["offreId"], id));
             db.SaveChanges();
         }
+        */
     }
 }
