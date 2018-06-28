@@ -45,6 +45,7 @@ namespace EasyJob.Controllers
             if (result != null)
             {
                 result.FirstConnexion = false;
+                Session["userFC"] = false;
                 db.SaveChanges();
             }
 

@@ -61,7 +61,13 @@ namespace EasyJob.Models
 
     public enum FieldOfActivity
     {
-        test,
-        test2
+        Informatique,
+        Industrie_automobile,
+        Banque,
+        Assurance,
+        Hotellerie,
+        Vente,
+        Communication
+        
     }
 }

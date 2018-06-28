@@ -38,12 +38,12 @@ namespace EasyJob.Controllers
             db.SaveChanges();
 
 
-
             var bdd2 = db.Set<User>();
             var result = bdd2.SingleOrDefault(b => b.UserId == session);
             if (result != null)
             {
                 result.FirstConnexion = false;
+                Session["userFC"] = false;
                 db.SaveChanges();
             }
 
